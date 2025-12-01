@@ -12,9 +12,7 @@ class TennisGame:
             self.m_score2 = self.m_score2 + 1
 
     def even_points(self):
-        if self.m_score1 == self.m_score2:
-            return True
-        return False
+        return self.m_score1 == self.m_score2
     def even_points_score(self):
         score = ""
         if self.m_score1 == 0:
