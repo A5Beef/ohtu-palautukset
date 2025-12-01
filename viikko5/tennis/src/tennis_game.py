@@ -27,7 +27,7 @@ class TennisGame:
     def advantage_player(self):
         return self.m_score1 >= 4 or self.m_score2 >= 4
     def advantage_difference(self):
-        minus_result = self.m_score1 - self. m_score2
+        minus_result = self.m_score1 - self.m_score2
 
         if minus_result == 1:
             score = "Advantage player1"
