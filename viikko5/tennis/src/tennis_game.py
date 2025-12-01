@@ -13,6 +13,7 @@ class TennisGame:
 
     def even_points(self):
         return self.m_score1 == self.m_score2
+
     def even_points_score(self):
         score = ""
         if self.m_score1 == 0:
@@ -24,10 +25,12 @@ class TennisGame:
         else:
             score = "Deuce"
         return score
+
     def advantage_player(self):
         if self.m_score1 >= 4 or self.m_score2 >= 4:
             return True
         return False
+
     def advantage_difference(self):
         minus_result = self.m_score1 - self. m_score2
 
@@ -42,6 +45,7 @@ class TennisGame:
             score = "Win for player2"
 
         return score
+
     def score_counter(self):
         temp_score = 0
         score = ""
@@ -60,6 +64,7 @@ class TennisGame:
             elif temp_score == 3:
                 score = score + "Forty"
         return score
+
     def get_score(self):
         if self.even_points():
             return self.even_points_score()
