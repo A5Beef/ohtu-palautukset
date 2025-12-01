@@ -14,7 +14,6 @@ class TennisGame:
     def even_points(self):
         return self.m_score1 == self.m_score2
     def even_points_score(self):
-        score = ""
         if self.m_score1 == 0:
             score = "Love-All"
         elif self.m_score1 == 1:
