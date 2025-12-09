@@ -62,3 +62,32 @@ class Or:
                 return True
 
         return False
+
+class QueryBuilder:
+    def __init__(self, matcher=None):
+        if matcher is None:
+            self._matcher = All()
+        else:
+            self._matcher = matcher
+    
+    def build(self):
+        return self._matcher
+    
+    def plays_in(self, team):
+        return QueryBuilder(And(self._matcher, PlaysIn(team)))
+    
+    def has_at_least(self, value, attr):
+        return QueryBuilder(And(self._matcher, HasAtLeast(value, attr)))
+    
+    def has_fewer_than(self, value, attr):
+        return QueryBuilder(And(self._matcher, HasFewerThan(value, attr)))
+    
+    def one_of(self, *query_builders):
+        matchers = []
+        for qb in query_builders:
+            matchers.append(qb.build())
+        
+        if isinstance(self._matcher, All):
+            return QueryBuilder(Or(*matchers))
+        else:
+            return QueryBuilder(Or(self._matcher, *matchers))
